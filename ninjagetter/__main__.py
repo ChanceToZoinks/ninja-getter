@@ -6,7 +6,7 @@ from api import Character, get_n_characters
 @click.command()
 @click.argument("num_chars", type=click.INT)
 @click.option("--verbose", help="Show all characters", is_flag=True)
-def main(num_chars: int, verbose):
+def cli(num_chars: int, verbose):
     if (chars := get_n_characters(n=num_chars)) == "No builds found.":
         return chars
     num_chars = len(chars)
@@ -31,4 +31,4 @@ def _count_unique_names(chars: list[Character]) -> int:
 
 
 if __name__ == "__main__":
-    main()
+    cli()
