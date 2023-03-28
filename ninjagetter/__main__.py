@@ -7,8 +7,7 @@ from api import Character, get_n_characters
 @click.argument("num_chars", type=click.INT)
 @click.option("--verbose", help="Show all characters", is_flag=True)
 def main(num_chars: int, verbose):
-    chars = get_n_characters(n=num_chars)
-    if chars == "No builds found.":
+    if (chars := get_n_characters(n=num_chars)) == "No builds found.":
         return chars
     num_chars = len(chars)
     num_unique_chars = _count_unique_names(chars)
